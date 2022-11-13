@@ -1,0 +1,15 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>TestBlazor</PageTitle>
+
+<MudThemeProvider />
+<div class="page">
+    <MudAppBar Color="Color.Dark">
+        <MudText Typo="Typo.h4" Style="text-align: center; margin: auto">Czy twój grzyb jest jadalny?</MudText>
+    </MudAppBar>
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
