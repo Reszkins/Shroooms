@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Shrooms/bin/Debug/net6.0
+/Shrooms/obj
+/.NET App/.vs
+/.NET App/Shrooms/bin/Debug/net6.0
+/.NET App/Shrooms/obj
