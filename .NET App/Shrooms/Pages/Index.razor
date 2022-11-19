@@ -1,8 +1,10 @@
 ﻿@page "/"
 
 @inherits LayoutComponentBase
-@using Shrooms.Controllers;
+@using Shrooms.Services;
+@using Shrooms.Parsers;
 @inject NavigationManager _nav;
+@inject CustomVisionService _customVision;
 
     <MudCard Elevation="4" Style="margin: auto; margin-top: 70px; margin-bottom: 40px; min-height: 100px; padding: 0; min-width: 50%; max-width: 50%;
              border: 1px solid lightgrey">
@@ -12,12 +14,16 @@
             <ButtonTemplate>
                 <MudPaper Height="300px" Outlined="true" Class="@DragClass">
                     <MudItem Style="text-align: center">
-                        <MudText Typo="Typo.h6" Align="Align.Center" Style="margin-top: 10px">Wgraj zdjęcie grzyba</MudText>
-                        <MudIcon Icon="@Icons.Filled.CloudUpload" Size="Size.Large" Style="color: grey; margin-top: 2vh"></MudIcon>
-                        @if (fileName is not null)
-                        {
-                            <MudChip Color="Color.Dark" Text="@fileName"></MudChip>
-                        }
+                        <div>
+                            <MudText Typo="Typo.h6" Align="Align.Center" Style="margin-top: 10px">Wgraj zdjęcie grzyba</MudText>
+                            <MudIcon Icon="@Icons.Filled.CloudUpload" Size="Size.Large" Style="color: grey; margin-top: 2vh"></MudIcon>
+                        </div>
+                        <div>
+                            @if (fileName is not null)
+                            {
+                                <MudChip Color="Color.Dark" Text="@fileName"></MudChip>
+                            }
+                        </div>
                     </MudItem>
                 </MudPaper>
             </ButtonTemplate>
@@ -58,14 +64,11 @@
     }
     private async Task Upload()
     {
-        // zapis do blob storage
-        //var blobController = new BlobStorageController();
-        //await blobController.SaveFileToStorage(file);
-        
-        // klasyfikacja przez custom vision
-        // wynik klasyfikacji jako argument dla strony result
+        var (name, probability) = await _customVision.ClassifyMushroom(file.OpenReadStream());
 
-        _nav.NavigateTo("/result");
+        var (polishName, mushroomType) = MushroomNameParser.GetPolishNameAndMushroomType(name);
+
+        _nav.NavigateTo($"/result/{polishName}/{probability.ToString()}/{mushroomType}");
     }
 
     private void SetDragClass()
