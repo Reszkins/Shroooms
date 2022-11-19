@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using System.IO;
 
-namespace Shrooms.Controllers
+namespace Shrooms.Services
 {
-    public class BlobStorageController
+    public class BlobStorageService
     {
         public async Task SaveFileToStorage(IBrowserFile file)
         {

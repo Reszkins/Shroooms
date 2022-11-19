@@ -1,11 +1,12 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager _nav;
 
 <PageTitle>TestBlazor</PageTitle>
 
 <MudThemeProvider />
 <div class="page">
     <MudAppBar Color="Color.Dark">
-        <MudText Typo="Typo.h4" Style="text-align: center; margin: auto">Czy twój grzyb jest jadalny?</MudText>
+        <MudText Typo="Typo.h4" Style="text-align: center; margin: auto" @onclick="() => Home()">Czy twój grzyb jest jadalny?</MudText>
     </MudAppBar>
     <main>
         <article class="content px-4">
@@ -13,3 +14,10 @@
         </article>
     </main>
 </div>
+
+@code {
+    private void Home()
+    {
+        _nav.NavigateTo($"/");
+    }
+}
