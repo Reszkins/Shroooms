@@ -1,9 +1,9 @@
-﻿@page "/result/{Name}/{Probability}/{MushroomType}"
+﻿@page "/result/{Name}/{Probability}/{MushroomType}/{ImageName}"
 
 <MudCard Elevation="4" Style="margin: auto; margin-top: 70px; margin-bottom: 40px; min-height: 100px; padding: 0; min-width: 50%; max-width: 50%;
              border: 1px solid lightgrey">
         <MudStack Style="width: 100%">
-        <MudImage Src="images/borowik.jpg" Alt="Borowik" Elevation="25" Class="rounded-lg" />
+        <MudImage Src="@GetImageUrl(ImageName)" Alt="Borowik" Elevation="25" Class="rounded-lg" />
         <MudText Typo="Typo.h6" Align="Align.Center" Style="margin-top: 10px">
             <p>Twój grzyb to @Name z prawdopodobieństwem @Probability%.</p>
             <p>Ten grzyb jest @MushroomType.</p>
@@ -18,4 +18,10 @@
     public string Probability { get; set; } = string.Empty;
     [Parameter]
     public string MushroomType { get; set; } = string.Empty;
+    [Parameter]
+    public string ImageName { get; set; } = string.Empty;
+
+    private string GetImageUrl(string imageName) {
+        return $"https://mushrooms.blob.core.windows.net/mushroomsimages/{imageName}";
+    }
 }
