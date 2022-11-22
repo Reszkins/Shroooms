@@ -21,8 +21,6 @@ namespace Shrooms.Services
             await newBlob.UploadAsync(file.OpenReadStream());
 
             return blobName;
-            //zapis obrazu do blob storage
-            //await blobContainerClient.UploadBlobAsync(trustedFilename, browserFile.OpenReadStream());
         }
     }
 }

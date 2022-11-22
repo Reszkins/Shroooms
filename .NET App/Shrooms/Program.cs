@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
+using Azure.Identity;
 using Shrooms.Services;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,9 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<CustomVisionService>();
 builder.Services.AddScoped<BlobStorageService>();
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
-
+builder.Configuration.AddAzureKeyVault(
+    new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
+    new DefaultAzureCredential());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
