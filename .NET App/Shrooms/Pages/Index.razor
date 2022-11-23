@@ -5,6 +5,7 @@
 @using Shrooms.Parsers;
 @inject NavigationManager _nav;
 @inject CustomVisionService _customVision;
+@inject BlobStorageService _blobStorage;
 
     <MudCard Elevation="4" Style="margin: auto; margin-top: 70px; margin-bottom: 40px; min-height: 100px; padding: 0; min-width: 50%; max-width: 50%;
              border: 1px solid lightgrey">
@@ -68,7 +69,9 @@
 
         var (polishName, mushroomType) = MushroomNameParser.GetPolishNameAndMushroomType(name);
 
-        _nav.NavigateTo($"/result/{polishName}/{probability.ToString()}/{mushroomType}");
+        var blobName = await _blobStorage.SaveFileToBlobStorage(file);
+
+        _nav.NavigateTo($"/result/{polishName}/{probability.ToString()}/{mushroomType}/{blobName}");
     }
 
     private void SetDragClass()
