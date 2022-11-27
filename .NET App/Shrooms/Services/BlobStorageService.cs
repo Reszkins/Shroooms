@@ -13,10 +13,10 @@ namespace Shrooms.Services
             _configuration = configuration;
         }
 
-        public async Task<string> SaveFileToBlobStorage(IBrowserFile file)
+        public async Task<string> SaveFileToBlobStorage(IBrowserFile file, string mushroomName)
         {
             var container = StorageBlobAuthenticator.GetBlobContainerClient(_configuration["BlobStorage:ConnectionString"], _configuration["BlobStorage:ContainerName"]);
-            string blobName = Guid.NewGuid().ToString() + Path.GetExtension(file.Name);
+            string blobName = mushroomName + "-" + Guid.NewGuid().ToString() + Path.GetExtension(file.Name);
             var newBlob = container.GetBlobClient(blobName);
             await newBlob.UploadAsync(file.OpenReadStream());
 

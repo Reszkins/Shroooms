@@ -1,6 +1,6 @@
 ﻿@page "/result/{Name}/{Probability}/{MushroomType}/{ImageName}"
 
-@if(Double.Parse(Probability) < 0.7)
+@if(Double.Parse(Probability) > 0.7)
 {
      <MudCard Elevation="4" Style="margin: auto; margin-top: 70px; margin-bottom: 40px; min-height: 100px; padding: 0; min-width: 50%; max-width: 50%;
                  border: 1px solid lightgrey">
