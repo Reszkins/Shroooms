@@ -40,4 +40,4 @@ https://www.youtube.com/watch?v=zGd1doMS_b8
 ## Zespół
 * Oskar Reszka https://github.com/Reszkins/
 * Konrad Trusiewicz https://github.com/Femtoo
-* Zuzanna Gaik
+* Zuzanna Gaik https://github.com/zvzia
