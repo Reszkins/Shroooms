@@ -1,7 +1,7 @@
 # Shroooms recognition
 
 ## Cel projektu
-Celem naszego projektu jest stworzenie aplikacji, która pomoże niedoświadczonym grzybiarzom w rozpoznaniu grzyba. Chcemy w ten sposób zmniejszyć ilość wypadków spowodowanych zjedzeniem trującego grzyba.
+Celem naszego projektu jest stworzenie aplikacji, która pomoże niedoświadczonym grzybiarzom w rozpoznaniu grzyba. Chcemy w ten sposób zmniejszyć ilość wypadków spowodowanych zjedzeniem trującego grzyba. User może zuploadować zdjęcie grzyby a nasza aplikacja, odpowie mu czy grzyb jest jadalny, czy niejadalny, czy trujący. 
 
 ## Architektura rozwiązania
 ![diagram](https://user-images.githubusercontent.com/73696833/204140300-11509b55-48ce-41d8-8fc5-bc95b20af218.png)
@@ -38,6 +38,6 @@ Wszystkie klucze i connection stringi, są przechowywane w Azure Key Vaulcie za 
 https://www.youtube.com/watch?v=zGd1doMS_b8
 
 ## Zespół
-* Oskar Reszka
+* Oskar Reszka https://github.com/Reszkins/
 * Konrad Trusiewicz https://github.com/Femtoo
-* Zuzanna Gaik https://github.com/zvzia
+* Zuzanna Gaik
