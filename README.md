@@ -28,7 +28,16 @@ Aplikacja korzysta z klasyfikacji zdjęć za pomocą Custom Vision.
 Do trenowania modelu użyliśmy dataset, który można znaleźć [tutaj](https://www.kaggle.com/datasets/derekkunowilliams/mushrooms).
 By ograniczyć koszty związane z trenowaniem modelu nie wykorzystaliśmy wszystkich zdjęć. Wybraliśmy po kilkanaście rodzajów z kategorii jadalne, trujące i śmiertelne. W sumie wybraliśmy 52 gatunki.
 
+## Blob Storage
+Zdjęcia które osiągneły powyżej 70% prawdopodobieństwa, zostają wysłane i przechowywane w naszym Storage Account, w kontenerze z blobami. Nazwa zdjęcia składa się z rodzaju grzyba + unikalny identyfikator + rozszerzenie, dzięki czemu grzyby, będzie można wykorzystać w kolejnych iteracjach lub innych klasyfikacjach. 
+
+## KeyVault
+Wszystkie klucze i connection stringi, są przechowywane w Azure Key Vaulcie za pomocą secretów. Z KeyVaultem łączymy się za pomocą stworzonego w app service, managed identity, które jest częścią Azure AD. W KeyVaulcie jest dodane policy, które pozwala naszemu App Service mieć dostęp do secretów.
+
+## Demo
+https://www.youtube.com/watch?v=zGd1doMS_b8
+
 ## Zespół
 * Oskar Reszka
-* Konrad Trusiewicz
+* Konrad Trusiewicz https://github.com/Femtoo
 * Zuzanna Gaik
