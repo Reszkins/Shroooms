@@ -1,7 +1,7 @@
 # Temat projektu
 Azure App Service + Cognitive Services shroooms recognition
 
-#Cel projektu
+# Cel projektu
 Celem naszego projektu jest stworzenie aplikacji, która pomoże niedoświadczonym grzybiarzom w rozpoznaniu grzyba. Chcemy w ten sposób zmniejszyć ilość wypadków spowodowanych zjedzeniem trującego grzyba.
 
 # Aplikacja webowa
