@@ -39,7 +39,9 @@
         }
         else
         {
-            <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+            <MudItem Style="text-align: center">
+                <MudProgressCircular Color="Color.Default" Indeterminate="true"/>
+            </MudItem>
         }
     </MudStack>
     </MudCard>
@@ -71,6 +73,7 @@
     private async Task Upload()
     {
         loading = true;
+        StateHasChanged();
 
         var (name, probability) = await _customVision.ClassifyMushroom(file.OpenReadStream());
 
@@ -79,6 +82,7 @@
         var blobName = await _blobStorage.SaveFileToBlobStorage(file);
 
         loading = false;
+        StateHasChanged();
         _nav.NavigateTo($"/result/{polishName}/{probability.ToString()}/{mushroomType}/{blobName}");
     }
 
