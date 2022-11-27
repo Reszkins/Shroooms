@@ -25,5 +25,10 @@ Ekran po nieudanej próbie klasyfikacji:
 
 ## Custom Vision
 Aplikacja korzysta z klasyfikacji zdjęć za pomocą Custom Vision.
-Do trenowania modelu użyliśmy dataset, który można znaleźć [tutaj](https://www.kaggle.com/datasets/derekkunowilliams/mushrooms)
+Do trenowania modelu użyliśmy dataset, który można znaleźć [tutaj](https://www.kaggle.com/datasets/derekkunowilliams/mushrooms).
 By ograniczyć koszty związane z trenowaniem modelu nie wykorzystaliśmy wszystkich zdjęć. Wybraliśmy po kilkanaście rodzajów z kategorii jadalne, trujące i śmiertelne. W sumie wybraliśmy 52 gatunki.
+
+## Zespół
+⋅⋅* Oskar Reszka
+⋅⋅* Konrad Trusiewicz
+⋅⋅* Zuzanna Gaik
