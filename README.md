@@ -22,3 +22,8 @@ Jeśli uzyskane prawdopodobieństwo jest niższe niż 70% aplikacja zwraca opis 
 Ekran po nieudanej próbie klasyfikacji:
 
 ![nieudane](https://user-images.githubusercontent.com/73691017/204139714-414edb72-8856-4fc6-a056-002ff900419c.png)
+
+## Custom Vision
+Aplikacja korzysta z klasyfikacji zdjęć za pomocą Custom Vision.
+Do trenowania modelu użyliśmy dataset, który można znaleźć [tutaj](https://www.kaggle.com/datasets/derekkunowilliams/mushrooms)
+By ograniczyć koszty związane z trenowaniem modelu nie wykorzystaliśmy wszystkich zdjęć. Wybraliśmy po kilkanaście rodzajów z kategorii jadalne, trujące i śmiertelne. W sumie wybraliśmy 52 gatunki.
