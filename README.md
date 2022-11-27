@@ -29,6 +29,6 @@ Do trenowania modelu użyliśmy dataset, który można znaleźć [tutaj](https:/
 By ograniczyć koszty związane z trenowaniem modelu nie wykorzystaliśmy wszystkich zdjęć. Wybraliśmy po kilkanaście rodzajów z kategorii jadalne, trujące i śmiertelne. W sumie wybraliśmy 52 gatunki.
 
 ## Zespół
-⋅⋅* Oskar Reszka
-⋅⋅* Konrad Trusiewicz
-⋅⋅* Zuzanna Gaik
+* Oskar Reszka
+* Konrad Trusiewicz
+* Zuzanna Gaik
