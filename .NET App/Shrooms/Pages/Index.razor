@@ -10,30 +10,37 @@
     <MudCard Elevation="4" Style="margin: auto; margin-top: 70px; margin-bottom: 40px; min-height: 100px; padding: 0; min-width: 50%; max-width: 50%;
              border: 1px solid lightgrey">
     <MudStack Style="width: 100%">
-        <MudFileUpload T="IBrowserFile" OnFilesChanged="UploadFile" SuppressOnChangeWhenInvalid Hidden="false" Class="flex-1" InputClass="absolute mud-width-full mud-height-full overflow-hidden z-20" InputStyle="opacity:0" Style="margin-left: 15px; margin-right: 15px"
+        @if(!loading)
+        {
+            <MudFileUpload T="IBrowserFile" OnFilesChanged="UploadFile" SuppressOnChangeWhenInvalid Hidden="false" Class="flex-1" InputClass="absolute mud-width-full mud-height-full overflow-hidden z-20" InputStyle="opacity:0" Style="margin-left: 15px; margin-right: 15px"
                        @ondragenter="@SetDragClass" @ondragleave="@ClearDragClass" @ondragend="@ClearDragClass">
-            <ButtonTemplate>
-                <MudPaper Height="300px" Outlined="true" Class="@DragClass">
-                    <MudItem Style="text-align: center">
-                        <div>
-                            <MudText Typo="Typo.h6" Align="Align.Center" Style="margin-top: 10px">Wgraj zdjęcie grzyba</MudText>
-                            <MudIcon Icon="@Icons.Filled.CloudUpload" Size="Size.Large" Style="color: grey; margin-top: 2vh"></MudIcon>
-                        </div>
-                        <div>
-                            @if (fileName is not null)
-                            {
-                                <MudChip Color="Color.Dark" Text="@fileName"></MudChip>
-                            }
-                        </div>
-                    </MudItem>
-                </MudPaper>
-            </ButtonTemplate>
-        </MudFileUpload>
+                <ButtonTemplate>
+                    <MudPaper Height="300px" Outlined="true" Class="@DragClass">
+                        <MudItem Style="text-align: center">
+                            <div>
+                                <MudText Typo="Typo.h6" Align="Align.Center" Style="margin-top: 10px">Wgraj zdjęcie grzyba (.jpg, .png)</MudText>
+                                <MudIcon Icon="@Icons.Filled.CloudUpload" Size="Size.Large" Style="color: grey; margin-top: 2vh"></MudIcon>
+                            </div>
+                            <div>
+                                @if (fileName is not null)
+                                {
+                                    <MudChip Color="Color.Dark" Text="@fileName"></MudChip>
+                                }
+                            </div>
+                        </MudItem>
+                    </MudPaper>
+                </ButtonTemplate>
+            </MudFileUpload>
 
-        <MudToolBar DisableGutters="true" Class="gap-4" Style="margin-left: 15px; margin-right: 15px">
-            <MudButton OnClick="Upload" Disabled="@(fileName is null)" Color="Color.Primary" Variant="Variant.Filled">Upload</MudButton>
-            <MudButton OnClick="Clear" Disabled="@(fileName is null)" Color="Color.Error" Variant="Variant.Filled">Clear</MudButton>
-        </MudToolBar>
+            <MudToolBar DisableGutters="true" Class="gap-4" Style="margin-left: 15px; margin-right: 15px">
+                <MudButton OnClick="Upload" Disabled="@(fileName is null)" Color="Color.Primary" Variant="Variant.Filled">Upload</MudButton>
+                <MudButton OnClick="Clear" Disabled="@(fileName is null)" Color="Color.Error" Variant="Variant.Filled">Clear</MudButton>
+            </MudToolBar>  
+        }
+        else
+        {
+            <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+        }
     </MudStack>
     </MudCard>
 
@@ -42,14 +49,11 @@
     private string DragClass = DefaultDragClass;
     private string? fileName = null;
     private IBrowserFile? file = null;
+    private bool loading = false;
 
     private void UploadFile(InputFileChangeEventArgs e)
     {
-        if (!e.File.ContentType.Contains("image"))
-        {
-            //powiadomienie, że tylko jpg png
-        }
-        else
+        if (e.File.ContentType.Contains("image"))
         {
             fileName = e.File.Name;
             file = e.File;
@@ -63,14 +67,18 @@
         ClearDragClass();
         await Task.Delay(100);
     }
+
     private async Task Upload()
     {
+        loading = true;
+
         var (name, probability) = await _customVision.ClassifyMushroom(file.OpenReadStream());
 
         var (polishName, mushroomType) = MushroomNameParser.GetPolishNameAndMushroomType(name);
 
         var blobName = await _blobStorage.SaveFileToBlobStorage(file);
 
+        loading = false;
         _nav.NavigateTo($"/result/{polishName}/{probability.ToString()}/{mushroomType}/{blobName}");
     }
 

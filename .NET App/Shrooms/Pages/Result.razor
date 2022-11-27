@@ -1,15 +1,29 @@
 ﻿@page "/result/{Name}/{Probability}/{MushroomType}/{ImageName}"
 
-<MudCard Elevation="4" Style="margin: auto; margin-top: 70px; margin-bottom: 40px; min-height: 100px; padding: 0; min-width: 50%; max-width: 50%;
-             border: 1px solid lightgrey">
-        <MudStack Style="width: 100%">
-        <MudImage Src="@GetImageUrl(ImageName)" Alt="Borowik" Elevation="25" Class="rounded-lg" />
+@if(Double.Parse(Probability) < 0.7)
+{
+     <MudCard Elevation="4" Style="margin: auto; margin-top: 70px; margin-bottom: 40px; min-height: 100px; padding: 0; min-width: 50%; max-width: 50%;
+                 border: 1px solid lightgrey">
+            <MudStack Style="width: 100%">
+            <MudImage Src="@GetImageUrl(ImageName)" Alt="Borowik" Elevation="25" Class="rounded-lg" />
+            <MudText Typo="Typo.h6" Align="Align.Center" Style="margin-top: 10px">
+                <p>Twój grzyb to @Name z prawdopodobieństwem @(Double.Parse(Probability)*100)%.</p>
+                <p>Ten grzyb jest @MushroomType.</p>
+            </MudText>
+            </MudStack>
+    </MudCard>
+}
+else
+{
+    <MudCard Elevation="4" Style="margin: auto; margin-top: 70px; margin-bottom: 40px; min-height: 100px; padding: 0; min-width: 50%; max-width: 50%;
+                 border: 1px solid lightgrey">
         <MudText Typo="Typo.h6" Align="Align.Center" Style="margin-top: 10px">
-            <p>Twój grzyb to @Name z prawdopodobieństwem @Probability%.</p>
-            <p>Ten grzyb jest @MushroomType.</p>
+            <p>Nie jesteśmy w stanie rozpoznać grzyba na twoim zdjęciu.</p>
+            <p>Prosimy o wgranie zdjęcia w lepszej jakości, na którym grzyb jest wyraźnie widoczny.</p>
         </MudText>
-        </MudStack>
-</MudCard>
+    </MudCard>
+}
+
 
 @code {
     [Parameter]
