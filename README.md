@@ -3,6 +3,9 @@
 ## Cel projektu
 Celem naszego projektu jest stworzenie aplikacji, która pomoże niedoświadczonym grzybiarzom w rozpoznaniu grzyba. Chcemy w ten sposób zmniejszyć ilość wypadków spowodowanych zjedzeniem trującego grzyba.
 
+## Architektura rozwiązania
+![diagram](https://user-images.githubusercontent.com/73696833/204140300-11509b55-48ce-41d8-8fc5-bc95b20af218.png)
+
 ## Aplikacja webowa
 Nasza aplikacja webowa opublikowana w Azure App Service została napisana w technologii Blazor Server z wykorzystaniem .NET 6. Aplikacja zawiera dwa widoki: widok główny służący do wgrania zdjęcia grzyba, które zostanie poddane klasyfikacji, oraz widok z rezultatem klasyfikacji. Użytkownik może wgrać tylko pliki z obrazem o rozszerzeniu .jpg i .png.
 
