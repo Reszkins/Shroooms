@@ -1,6 +1,9 @@
 # Temat projektu
 Azure App Service + Cognitive Services shroooms recognition
 
+#Cel projektu
+Celem naszego projektu jest stworzenie aplikacji, która pomoże niedoświadczonym grzybiarzom w rozpoznaniu grzyba. Chcemy w ten sposób zmniejszyć ilość wypadków spowodowanych zjedzeniem trującego grzyba.
+
 # Aplikacja webowa
 Nasza aplikacja webowa opublikowana w Azure App Service została napisana w technologii Blazor Server z wykorzystaniem .NET 6. Aplikacja zawiera dwa widoki: widok główny służący do wgrania zdjęcia grzyba, które zostanie poddane klasyfikacji, oraz widok z rezultatem klasyfikacji. Użytkownik może wgrać tylko pliki z obrazem o rozszerzeniu .jpg i .png.
 
