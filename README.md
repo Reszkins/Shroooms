@@ -6,6 +6,12 @@ Celem naszego projektu jest stworzenie aplikacji, która pomoże niedoświadczon
 ## Architektura rozwiązania
 ![diagram](https://user-images.githubusercontent.com/73696833/204140300-11509b55-48ce-41d8-8fc5-bc95b20af218.png)
 
+## Funkcjonalności
+* Wgranie pliku wejściowego - grafiki w formacie jpg, png.
+* Przechowywanie dobrze sklasyfikowanych grafik w BlobStorage
+* Dostępność w postaci webowej strony
+* Sklasyfikowanie rodzaju grzyba, określenie czy jest jadalny czy nie
+
 ## Aplikacja webowa
 Nasza aplikacja webowa opublikowana w Azure App Service została napisana w technologii Blazor Server z wykorzystaniem .NET 6. Aplikacja zawiera dwa widoki: widok główny służący do wgrania zdjęcia grzyba, które zostanie poddane klasyfikacji, oraz widok z rezultatem klasyfikacji. Użytkownik może wgrać tylko pliki z obrazem o rozszerzeniu .jpg i .png.
 
