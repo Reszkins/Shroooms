@@ -40,6 +40,7 @@
         else
         {
             <MudItem Style="text-align: center">
+                <div style="margin-top:10px"></div>
                 <MudProgressCircular Color="Color.Default" Indeterminate="true"/>
             </MudItem>
         }
@@ -81,8 +82,6 @@
 
         var blobName = await _blobStorage.SaveFileToBlobStorage(file);
 
-        loading = false;
-        StateHasChanged();
         _nav.NavigateTo($"/result/{polishName}/{probability.ToString()}/{mushroomType}/{blobName}");
     }
 
